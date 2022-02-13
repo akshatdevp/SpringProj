@@ -2,12 +2,18 @@ package com.dbs.PayZ.Controllers;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+ 
 import com.dbs.PayZ.Entities.Customer;
 import com.dbs.PayZ.Services.CustomerService;
+import com.dbs.PayZ.util.Utility;
+
+
 
 @RestController
 @RequestMapping("customer")
@@ -27,8 +33,10 @@ public class CustomerController {
 	@GetMapping("/{id}")
 	@ResponseBody
 	public ResponseEntity<Customer> getCusomterById(@PathVariable Long id){
-		//System.out.println( ResponseEntity.ok().body(custService.getCustomerById(id)));
-		return  ResponseEntity.ok().body(custService.getCustomerById(id));
+		System.out.println("/customer/id");
+		Optional<Customer> customer = custService.getCustomerById(id);
+		return Utility.fromOpt(customer);
+		
 	}
 
 	// @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

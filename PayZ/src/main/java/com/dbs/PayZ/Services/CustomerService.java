@@ -25,14 +25,9 @@ public class CustomerService {
         System.out.println(lc);
     	return ls;
     }
-    public Customer getCustomerById(Long id){
-        Optional<Customer> oc = customerRepo.findById(id);
-        if(oc.isPresent())
-            {
-                System.out.print(oc);
-                return oc.get();
-            }
-        return null;
+    public Optional<Customer> getCustomerById(Long id){
+        return customerRepo.findById(id);
+      
     }    
     // public Customer newCustomer(Customer customer){
     //     return customerRepo.save(customer);

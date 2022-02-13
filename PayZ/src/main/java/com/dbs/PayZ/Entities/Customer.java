@@ -37,22 +37,8 @@ public class Customer {
     Boolean overDraft;
 
     public Customer() {}
-
-    public Customer(Long id)
-    {
-    	this.customerId = id;
-    	this.accHolderName = "default";
-    	this.clearBalance = (long) 0;
-    	this.overDraft = false;
-    }
     public String toString()
     {
     	return this.customerId + this.accHolderName;
-    }
-    public Customer(String accHolderName, long clearBalance, boolean overDraft)
-    {
-        this.accHolderName = accHolderName;
-        this.clearBalance = clearBalance;
-        this.overDraft = overDraft;
     }
 }
