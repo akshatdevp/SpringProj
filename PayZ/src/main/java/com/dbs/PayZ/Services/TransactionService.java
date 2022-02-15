@@ -8,12 +8,10 @@ import com.dbs.PayZ.util.Utility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
-@RequestMapping("/txns")
+
+@Service
 public class TransactionService {
     private TransactionRepository txnRepo;
     
@@ -22,16 +20,20 @@ public class TransactionService {
     {
     	this.txnRepo = tr;
     }
-    Long getTotalAmount(Long amount, double transferFee){
+    Long getTotalAmount(Long amount, double transferFee){ // adds the transfer fee to the total amount.
         return (long) (amount*(100.0+transferFee));
-    }
-    @GetMapping
+    } 
+    
     public List<Transaction> getTransactions(){
         return txnRepo.findAll();
     }
-    @GetMapping
+
     public ResponseEntity<Transaction> getTxnById(Long TxnId){
         return Utility.fromOpt(txnRepo.findById(TxnId));
+    }
+
+    public Transaction initiateTxn(Transaction txn){
+        return txnRepo.save(txn);
     }
 
 }

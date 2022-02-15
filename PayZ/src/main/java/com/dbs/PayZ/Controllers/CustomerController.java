@@ -30,8 +30,8 @@ public class CustomerController {
 	}
 	@GetMapping("/{id}")
 	@ResponseBody
-	public ResponseEntity<Customer> getCusomterById(@PathVariable Long id){
-		System.out.println("/customer/id");
+	public ResponseEntity<Customer> getCusomterById(@PathVariable Long id){ //tested.
+		//System.out.println("/customer/id");
 		Optional<Customer> customer = custService.getCustomerById(id);
 		return Utility.fromOpt(customer);
 		

@@ -9,12 +9,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+// import lombok.AllArgsConstructor;
+// import lombok.Data;
 
-@AllArgsConstructor
+// @AllArgsConstructor
 
-@Data
+// @Data
 @Entity
 @Table(name ="customer")
 public class Customer {
@@ -41,4 +41,29 @@ public class Customer {
     {
     	return this.customerId + this.accHolderName;
     }
+    public Long getCustomerId() {
+        return customerId;
+    }
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+    public String getAccHolderName() {
+        return accHolderName;
+    }
+    public void setAccHolderName(String accHolderName) {
+        this.accHolderName = accHolderName;
+    }
+    public Long getClearBalance() {
+        return clearBalance;
+    }
+    public void setClearBalance(Long clearBalance) {
+        this.clearBalance = clearBalance;
+    }
+    public Boolean getOverDraft() {
+        return overDraft;
+    }
+    public void setOverDraft(Boolean overDraft) {
+        this.overDraft = overDraft;
+    }
+    
 }
